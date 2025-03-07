@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shein_mg_app/presentation/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,16 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'Shein MG',
       theme: ThemeData(),
       debugShowCheckedModeBanner: false,
-      home: MyHomePage(),
+      home: Home(),
     );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(body: Container());
   }
 }
