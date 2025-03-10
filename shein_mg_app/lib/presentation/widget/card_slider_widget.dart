@@ -1,6 +1,7 @@
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:shein_mg_app/domain/entities/article.dart';
+import 'package:shein_mg_app/presentation/widget/prix_art_widget.dart';
 import 'package:shein_mg_app/presentation/widget/taille_widget.dart';
 import 'package:shein_mg_app/presentation/widget/titre_art_widget.dart';
 
@@ -49,8 +50,8 @@ class _CardSliderWidgetState extends State<CardSliderWidget> {
     _articleCardPageController = PageController(viewportFraction: 0.77)
       ..addListener(_articleCardPagePercentListener);
 
-    _articleTitlePageController =
-        PageController()..addListener(_articleTitlePagePercentListener);
+    _articleTitlePageController = PageController()
+      ..addListener(_articleTitlePagePercentListener);
     super.initState();
   }
 
@@ -91,6 +92,8 @@ class _CardSliderWidgetState extends State<CardSliderWidget> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 TitreArtWidget(article: article, couleur: widget.color),
+                const SizedBox(height: 10),
+                PrixArtWidget(article: article, widget: widget),
                 const SizedBox(height: 10),
                 TailleWidget(article: article, couleur: widget.color),
               ],
@@ -143,11 +146,11 @@ class _CardSliderWidgetState extends State<CardSliderWidget> {
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 300),
                     curve: Curves.easeInOut,
-                    transform:
-                        Matrix4.identity()..translate(
-                          isCurrentPage ? 0.0 : -20.0,
-                          isCurrentPage ? 0.0 : 60.0,
-                        ),
+                    transform: Matrix4.identity()
+                      ..translate(
+                        isCurrentPage ? 0.0 : -20.0,
+                        isCurrentPage ? 0.0 : 60.0,
+                      ),
                     decoration: BoxDecoration(
                       borderRadius: const BorderRadius.all(Radius.circular(45)),
                       boxShadow: [
