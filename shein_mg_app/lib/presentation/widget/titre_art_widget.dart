@@ -17,9 +17,9 @@ class TitreArtWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String title = article.titreArt;
-    if (title.length > 10) {
+    if (title.length > 14) {
       title =
-          '${title.substring(0, 11)} ...'; // Limiter à 10 caractères et ajouter des points de suspension
+          '${title.substring(0, 14)} ...'; // Limiter à 10 caractères et ajouter des points de suspension
     }
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
