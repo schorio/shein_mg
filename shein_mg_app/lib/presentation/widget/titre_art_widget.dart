@@ -35,7 +35,6 @@ class TitreArtWidget extends StatelessWidget {
               fontFamily: 'MontSerrat_2',
             ),
           ),
-          const SizedBox(height: 3),
           Row(
             children: [
               Icon(Icons.star, color: couleur, size: 15),

@@ -71,7 +71,7 @@ class _CardSliderWidgetState extends State<CardSliderWidget> {
     return Column(
       children: [
         pochette(context, widget.indexTab),
-        const SizedBox(height: 20),
+        const SizedBox(height: 25),
         title(),
       ],
     );
@@ -92,9 +92,9 @@ class _CardSliderWidgetState extends State<CardSliderWidget> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 TitreArtWidget(article: article, couleur: widget.color),
-                const SizedBox(height: 10),
+                const SizedBox(height: 12),
                 ModeleWidget(article: article, couleur: widget.color),
-                const SizedBox(height: 10),
+                const SizedBox(height: 12),
                 PrixArtWidget(article: article, widget: widget),
               ],
             ),
