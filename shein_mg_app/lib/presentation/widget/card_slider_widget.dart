@@ -93,9 +93,9 @@ class _CardSliderWidgetState extends State<CardSliderWidget> {
               children: [
                 TitreArtWidget(article: article, couleur: widget.color),
                 const SizedBox(height: 10),
-                PrixArtWidget(article: article, widget: widget),
-                const SizedBox(height: 10),
                 TailleWidget(article: article, couleur: widget.color),
+                const SizedBox(height: 10),
+                PrixArtWidget(article: article, widget: widget),
               ],
             ),
           );
