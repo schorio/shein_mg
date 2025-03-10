@@ -44,13 +44,22 @@ class TitreArtWidget extends StatelessWidget {
                 Row(
                   children: [
                     Icon(Icons.star, color: couleur, size: 15),
-                    const SizedBox(width: 5),
+                    const SizedBox(width: 3),
                     Text(
                       article.noteArt.toString(),
                       style: const TextStyle(
                         fontSize: 12,
+                        fontFamily: 'MontSerrat_2',
                         color: MesCouleurs.noir,
                       ),
+                    ),
+                    const SizedBox(width: 10),
+                    const Text("By"),
+                    const SizedBox(width: 3),
+                    Text(
+                      "Shein",
+                      style:
+                          TextStyle(color: couleur, fontFamily: 'MontSerrat_2'),
                     ),
                   ],
                 ),
