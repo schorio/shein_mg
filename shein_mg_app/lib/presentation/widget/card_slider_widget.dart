@@ -4,6 +4,7 @@ import 'package:shein_mg_app/domain/entities/article.dart';
 import 'package:shein_mg_app/presentation/widget/prix_art_widget.dart';
 import 'package:shein_mg_app/presentation/widget/modele_widget.dart';
 import 'package:shein_mg_app/presentation/widget/titre_art_widget.dart';
+import 'package:shein_mg_app/route/app_route_name.dart';
 
 class CardSliderWidget extends StatefulWidget {
   const CardSliderWidget({
@@ -140,7 +141,13 @@ class _CardSliderWidgetState extends State<CardSliderWidget> {
               ),
               scale: isScrolling && isFirstPage ? 1 - progress : scale,
               child: GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    AppRouteName.detailsArt,
+                    arguments: article,
+                  );
+                },
                 child: Hero(
                   tag: article.imageArt[0],
                   child: AnimatedContainer(
