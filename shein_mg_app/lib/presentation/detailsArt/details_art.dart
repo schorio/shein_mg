@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:palette_generator/palette_generator.dart';
 import 'package:shein_mg_app/domain/entities/article.dart';
 import 'package:shein_mg_app/presentation/detailsArt/widget/article_images.dart';
 import 'package:shein_mg_app/presentation/detailsArt/widget/article_info.dart';
@@ -16,9 +17,16 @@ class _DetailsArtState extends State<DetailsArt> {
   late final article = ModalRoute.of(context)!.settings.arguments as Article;
   late PageController _imageController;
   int _currentImage = 0;
+  PaletteGenerator? paletteGenerator;
 
   @override
   Widget build(BuildContext context) {
+    Color couleurDominant = paletteGenerator != null
+        ? paletteGenerator!.vibrantColor != null
+            ? paletteGenerator!.vibrantColor!.color
+            : Colors.black
+        : Colors.black;
+
     return Scaffold(
       body: SafeArea(
         child: CustomScrollView(
@@ -32,6 +40,7 @@ class _DetailsArtState extends State<DetailsArt> {
                   "A cool gray cap in soft corduroy. Watch me.' By buying cotton products from Lindex, you’re supporting more responsibly...",
               rating: 4.4,
               numOfReviews: 126,
+              color: couleurDominant,
             ),
           ],
         ),
@@ -50,6 +59,7 @@ class _DetailsArtState extends State<DetailsArt> {
               onPageChanged: (pageNum) {
                 setState(() {
                   _currentImage = pageNum;
+                  generateColors(article.imageArt[_currentImage]);
                 });
               },
               itemCount: article.imageArt.length,
@@ -73,10 +83,21 @@ class _DetailsArtState extends State<DetailsArt> {
   }
 
   @override
-  void initState() {
+  void didChangeDependencies() {
+    generateColors(article.imageArt[_currentImage]);
     _imageController =
         PageController(viewportFraction: 0.9, initialPage: _currentImage);
-    super.initState();
+    super.didChangeDependencies();
+  }
+
+  void generateColors(image) async {
+    paletteGenerator = await PaletteGenerator.fromImageProvider(
+      AssetImage(image),
+      size: const Size(100, 100),
+      region: const Rect.fromLTRB(0, 0, 50, 50),
+    );
+
+    setState(() {});
   }
 
   @override

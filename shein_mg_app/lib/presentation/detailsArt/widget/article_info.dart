@@ -8,11 +8,13 @@ class ArticleInfo extends StatelessWidget {
     required this.description,
     required this.rating,
     required this.numOfReviews,
+    required this.color,
   });
 
   final String title, brand, description;
   final double rating;
   final int numOfReviews;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +52,22 @@ class ArticleInfo extends StatelessWidget {
               style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(height: 16),
+            Container(
+              padding: const EdgeInsets.all(16 / 2),
+              decoration: BoxDecoration(
+                color: color,
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(16 / 2),
+                ),
+              ),
+              child: Text(
+                "Motif",
+                style: Theme.of(context)
+                    .textTheme
+                    .labelSmall!
+                    .copyWith(color: Colors.white, fontWeight: FontWeight.w500),
+              ),
+            ),
             const SizedBox(height: 16),
             Text(
               "Détails sur l'article",
