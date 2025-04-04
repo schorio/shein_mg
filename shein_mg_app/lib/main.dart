@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shein_mg_app/presentation/home.dart';
+import 'package:shein_mg_app/route/app_route.dart';
+import 'package:shein_mg_app/route/app_route_name.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,9 @@ class MyApp extends StatelessWidget {
       title: 'Shein MG',
       theme: ThemeData(),
       debugShowCheckedModeBanner: false,
-      home: Home(),
+      initialRoute: AppRouteName.home,
+      onGenerateRoute: AppRoute.generate,
     );
+
   }
 }
