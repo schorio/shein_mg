@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shein_mg_app/domain/entities/article.dart';
+import 'package:shein_mg_app/presentation/detailsArt/widget/silver_app_bar.dart';
 
 class DetailsArt extends StatefulWidget {
   const DetailsArt({super.key});
@@ -13,10 +14,12 @@ class _DetailsArtState extends State<DetailsArt> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Text(
-          article.titreArt,
+    return const Scaffold(
+      body: SafeArea(
+        child: CustomScrollView(
+          slivers: [
+            SilverAppBar(),
+          ],
         ),
       ),
     );
