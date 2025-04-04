@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shein_mg_app/domain/entities/article.dart';
 import 'package:shein_mg_app/presentation/detailsArt/widget/article_images.dart';
+import 'package:shein_mg_app/presentation/detailsArt/widget/article_info.dart';
 import 'package:shein_mg_app/presentation/detailsArt/widget/silver_app_bar.dart';
 
 class DetailsArt extends StatefulWidget {
@@ -22,6 +23,14 @@ class _DetailsArtState extends State<DetailsArt> {
             const SilverAppBar(),
             ArticleImage(
               images: article.imageArt,
+            ),
+            ArticleInfo(
+              brand: "LIPSY LONDON",
+              title: "Sleeveless Ruffle",
+              description:
+                  "A cool gray cap in soft corduroy. Watch me.' By buying cotton products from Lindex, you’re supporting more responsibly...",
+              rating: 4.4,
+              numOfReviews: 126,
             ),
           ],
         ),
