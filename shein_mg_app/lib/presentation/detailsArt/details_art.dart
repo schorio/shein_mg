@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shein_mg_app/domain/entities/article.dart';
 import 'package:shein_mg_app/presentation/detailsArt/widget/article_images.dart';
 import 'package:shein_mg_app/presentation/detailsArt/widget/article_info.dart';
+import 'package:shein_mg_app/presentation/detailsArt/widget/index_image.dart';
 import 'package:shein_mg_app/presentation/detailsArt/widget/silver_app_bar.dart';
 
 class DetailsArt extends StatefulWidget {
@@ -13,6 +14,8 @@ class DetailsArt extends StatefulWidget {
 
 class _DetailsArtState extends State<DetailsArt> {
   late final article = ModalRoute.of(context)!.settings.arguments as Article;
+  late PageController _imageController;
+  int _currentImage = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +24,7 @@ class _DetailsArtState extends State<DetailsArt> {
         child: CustomScrollView(
           slivers: [
             const SilverAppBar(),
-            ArticleImage(
-              images: article.imageArt,
-            ),
+            imageSlider(),
             ArticleInfo(
               brand: "LIPSY LONDON",
               title: "Sleeveless Ruffle",
@@ -36,5 +37,51 @@ class _DetailsArtState extends State<DetailsArt> {
         ),
       ),
     );
+  }
+
+  SliverToBoxAdapter imageSlider() {
+    return SliverToBoxAdapter(
+      child: AspectRatio(
+        aspectRatio: 0.9,
+        child: Stack(
+          children: [
+            PageView.builder(
+              controller: _imageController,
+              onPageChanged: (pageNum) {
+                setState(() {
+                  _currentImage = pageNum;
+                });
+              },
+              itemCount: article.imageArt.length,
+              itemBuilder: (context, index) => Padding(
+                padding: const EdgeInsets.only(right: 16),
+                child: ArticleImage(
+                  article: article,
+                  index: index,
+                ),
+              ),
+            ),
+            if (article.imageArt.length > 1)
+              IndexImage(
+                article: article,
+                index: _currentImage,
+              )
+          ],
+        ),
+      ),
+    );
+  }
+
+  @override
+  void initState() {
+    _imageController =
+        PageController(viewportFraction: 0.9, initialPage: _currentImage);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _imageController.dispose();
+    super.dispose();
   }
 }
