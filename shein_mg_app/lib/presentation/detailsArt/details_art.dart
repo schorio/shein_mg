@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shein_mg_app/domain/entities/article.dart';
-import 'package:shein_mg_app/presentation/detailsArt/widget/product_images.dart';
+import 'package:shein_mg_app/presentation/detailsArt/widget/article_images.dart';
 import 'package:shein_mg_app/presentation/detailsArt/widget/silver_app_bar.dart';
 
 class DetailsArt extends StatefulWidget {
