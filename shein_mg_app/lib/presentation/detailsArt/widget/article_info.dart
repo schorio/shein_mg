@@ -22,21 +22,14 @@ class ArticleInfo extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              brand.toUpperCase(),
-              style: const TextStyle(
-                color: Colors.grey,
-              ),
-            ),
-            const SizedBox(height: 5),
-            Text(
-              title,
-              maxLines: 2,
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-            const SizedBox(height: 16),
             Row(
               children: [
+                Text(
+                  brand.toUpperCase(),
+                  style: const TextStyle(
+                    color: Colors.grey,
+                  ),
+                ),
                 const Spacer(),
                 const Icon(
                   Icons.star,
@@ -48,9 +41,15 @@ class ArticleInfo extends StatelessWidget {
                   "$rating ",
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
-                Text("($numOfReviews Reviews)")
               ],
             ),
+            const SizedBox(height: 5),
+            Text(
+              title,
+              maxLines: 2,
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            const SizedBox(height: 16),
             const SizedBox(height: 16),
             Text(
               "Détails sur l'article",
