@@ -1,9 +1,9 @@
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:shein_mg_app/domain/entities/article.dart';
-import 'package:shein_mg_app/presentation/widget/prix_art_widget.dart';
-import 'package:shein_mg_app/presentation/widget/modele_widget.dart';
-import 'package:shein_mg_app/presentation/widget/titre_art_widget.dart';
+import 'package:shein_mg_app/presentation/home/widget/modele_widget.dart';
+import 'package:shein_mg_app/presentation/home/widget/prix_art_widget.dart';
+import 'package:shein_mg_app/presentation/home/widget/titre_art_widget.dart';
 import 'package:shein_mg_app/route/app_route_name.dart';
 
 class CardSliderWidget extends StatefulWidget {

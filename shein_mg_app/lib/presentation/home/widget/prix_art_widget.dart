@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shein_mg_app/domain/entities/article.dart';
-import 'package:shein_mg_app/presentation/widget/card_slider_widget.dart';
+import 'package:shein_mg_app/presentation/home/widget/card_slider_widget.dart';
 
 class PrixArtWidget extends StatelessWidget {
   const PrixArtWidget({

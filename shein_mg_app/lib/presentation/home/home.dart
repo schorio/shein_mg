@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:palette_generator/palette_generator.dart';
 import 'package:shein_mg_app/core/constants/app_color.dart';
 import 'package:shein_mg_app/domain/entities/article.dart';
-import 'package:shein_mg_app/presentation/widget/card_slider_widget.dart';
-import 'package:shein_mg_app/presentation/widget/title_tab_bar.dart';
+import 'package:shein_mg_app/presentation/home/widget/card_slider_widget.dart';
+import 'package:shein_mg_app/presentation/home/widget/title_tab_bar.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -47,12 +47,11 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    Color couleurDominant =
-        paletteGenerator != null
-            ? paletteGenerator!.darkVibrantColor != null
-                ? paletteGenerator!.darkVibrantColor!.color
-                : MesCouleurs.noir
-            : MesCouleurs.noir;
+    Color couleurDominant = paletteGenerator != null
+        ? paletteGenerator!.darkVibrantColor != null
+            ? paletteGenerator!.darkVibrantColor!.color
+            : MesCouleurs.noir
+        : MesCouleurs.noir;
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
