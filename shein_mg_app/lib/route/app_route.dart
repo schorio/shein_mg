@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shein_mg_app/presentation/detailsArt/widget/details_art.dart';
+import 'package:shein_mg_app/presentation/detailsArt/details_art.dart';
 import 'package:shein_mg_app/presentation/home.dart';
 import 'package:shein_mg_app/route/app_route_name.dart';
 
