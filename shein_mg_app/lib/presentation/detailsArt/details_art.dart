@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shein_mg_app/domain/entities/article.dart';
+import 'package:shein_mg_app/presentation/detailsArt/widget/product_images.dart';
 import 'package:shein_mg_app/presentation/detailsArt/widget/silver_app_bar.dart';
 
 class DetailsArt extends StatefulWidget {
@@ -14,11 +15,14 @@ class _DetailsArtState extends State<DetailsArt> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
-            SilverAppBar(),
+            const SilverAppBar(),
+            ArticleImage(
+              images: article.imageArt,
+            ),
           ],
         ),
       ),
