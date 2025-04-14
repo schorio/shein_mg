@@ -10,10 +10,15 @@ class SilverAppBar extends StatelessWidget {
     return SliverAppBar(
       floating: true,
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      leading: const Icon(
-        Icons.arrow_back_ios_rounded,
-        color: Colors.black,
-        size: 25,
+      leading: IconButton(
+        icon: const Icon(
+          Icons.arrow_back_ios_rounded,
+          color: Colors.black,
+          size: 25,
+        ),
+        onPressed: () {
+          Navigator.pop(context);
+        },
       ),
       actions: [
         IconButton(
