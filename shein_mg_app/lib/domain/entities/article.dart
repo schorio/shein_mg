@@ -4,6 +4,7 @@ class Article {
   final String titreArt;
   final double prixArt;
   final double noteArt;
+  final String desciption;
   final List<String> imageArt;
   final List<String> couleurArt;
   final List<String> tailleArt;
@@ -15,6 +16,7 @@ class Article {
     required this.titreArt,
     required this.prixArt,
     required this.noteArt,
+    required this.desciption,
     required this.imageArt,
     required this.couleurArt,
     required this.tailleArt,
@@ -29,6 +31,8 @@ List<Article> listeArticles = [
     titreArt: 'Article 1',
     prixArt: 45000.00,
     noteArt: 4.5,
+    desciption:
+        "A cool gray cap in soft corduroy. Watch me.' By buying cotton products from Lindex, you’re supporting more responsibly...",
     imageArt: [
       'lib/core/assets/1-1.webp',
       'lib/core/assets/1-2.webp',
@@ -45,6 +49,8 @@ List<Article> listeArticles = [
     titreArt: 'Article 2',
     prixArt: 60000.00,
     noteArt: 4.0,
+    desciption:
+        "A cool gray cap in soft corduroy. Watch me.' By buying cotton products from Lindex, you’re supporting more responsibly...",
     imageArt: [
       'lib/core/assets/2-1.webp',
       'lib/core/assets/2-2.webp',
@@ -60,6 +66,8 @@ List<Article> listeArticles = [
     titreArt: 'Robe Élégante',
     prixArt: 38000.00,
     noteArt: 4.2,
+    desciption:
+        "A cool gray cap in soft corduroy. Watch me.' By buying cotton products from Lindex, you’re supporting more responsibly...",
     imageArt: [
       'lib/core/assets/3-1.webp',
       'lib/core/assets/3-2.webp',
@@ -77,6 +85,8 @@ List<Article> listeArticles = [
     titreArt: 'Robe de Soirée',
     prixArt: 59000.00,
     noteArt: 4.8,
+    desciption:
+        "A cool gray cap in soft corduroy. Watch me.' By buying cotton products from Lindex, you’re supporting more responsibly...",
     imageArt: [
       'lib/core/assets/4-1.webp',
       'lib/core/assets/4-2.webp',
@@ -92,6 +102,8 @@ List<Article> listeArticles = [
     titreArt: 'Robe Décontractée',
     prixArt: 55000.00,
     noteArt: 3.9,
+    desciption:
+        "A cool gray cap in soft corduroy. Watch me.' By buying cotton products from Lindex, you’re supporting more responsibly...",
     imageArt: [
       'lib/core/assets/5-1.webp',
       'lib/core/assets/5-2.webp',
