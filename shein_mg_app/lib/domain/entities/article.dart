@@ -2,7 +2,8 @@ class Article {
   final int idArt;
   final String fournisseur;
   final String titreArt;
-  final double prixArt;
+  final int prixArt;
+  final int prixArtAP;
   final double noteArt;
   final String desciption;
   final List<String> imageArt;
@@ -15,6 +16,7 @@ class Article {
     required this.fournisseur,
     required this.titreArt,
     required this.prixArt,
+    required this.prixArtAP,
     required this.noteArt,
     required this.desciption,
     required this.imageArt,
@@ -29,7 +31,8 @@ List<Article> listeArticles = [
     idArt: 1,
     fournisseur: 'shein',
     titreArt: 'Article 1',
-    prixArt: 45000.00,
+    prixArt: 45000,
+    prixArtAP: 60000,
     noteArt: 4.5,
     desciption:
         "A cool gray cap in soft corduroy. Watch me.' By buying cotton products from Lindex, you’re supporting more responsibly...",
@@ -47,7 +50,8 @@ List<Article> listeArticles = [
     idArt: 2,
     fournisseur: 'shein',
     titreArt: 'Article 2',
-    prixArt: 60000.00,
+    prixArt: 60000,
+    prixArtAP: 80000,
     noteArt: 4.0,
     desciption:
         "A cool gray cap in soft corduroy. Watch me.' By buying cotton products from Lindex, you’re supporting more responsibly...",
@@ -64,7 +68,8 @@ List<Article> listeArticles = [
     idArt: 3,
     fournisseur: 'shein',
     titreArt: 'Robe Élégante',
-    prixArt: 38000.00,
+    prixArt: 38000,
+    prixArtAP: 50000,
     noteArt: 4.2,
     desciption:
         "A cool gray cap in soft corduroy. Watch me.' By buying cotton products from Lindex, you’re supporting more responsibly...",
@@ -83,7 +88,8 @@ List<Article> listeArticles = [
     idArt: 4,
     fournisseur: 'shein',
     titreArt: 'Robe de Soirée',
-    prixArt: 59000.00,
+    prixArt: 59000,
+    prixArtAP: 65000,
     noteArt: 4.8,
     desciption:
         "A cool gray cap in soft corduroy. Watch me.' By buying cotton products from Lindex, you’re supporting more responsibly...",
@@ -100,7 +106,8 @@ List<Article> listeArticles = [
     idArt: 5,
     fournisseur: 'shein',
     titreArt: 'Robe Décontractée',
-    prixArt: 55000.00,
+    prixArt: 55000,
+    prixArtAP: 70000,
     noteArt: 3.9,
     desciption:
         "A cool gray cap in soft corduroy. Watch me.' By buying cotton products from Lindex, you’re supporting more responsibly...",
