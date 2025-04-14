@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:palette_generator/palette_generator.dart';
+import 'package:shein_mg_app/core/constants/app_color.dart';
 import 'package:shein_mg_app/domain/entities/article.dart';
 import 'package:shein_mg_app/presentation/detailsArt/widget/article_images.dart';
 import 'package:shein_mg_app/presentation/detailsArt/widget/article_info.dart';
+import 'package:shein_mg_app/presentation/detailsArt/widget/bloc_prix.dart';
 import 'package:shein_mg_app/presentation/detailsArt/widget/index_image.dart';
 import 'package:shein_mg_app/presentation/detailsArt/widget/silver_app_bar.dart';
 
@@ -33,6 +35,10 @@ class _DetailsArtState extends State<DetailsArt> {
           slivers: [
             const SilverAppBar(),
             imageSlider(),
+            BlocPrix(
+              article: article,
+              couleurDominant: couleurDominant,
+            ),
             ArticleInfo(
               indexImage: _currentImage,
               color: couleurDominant,
