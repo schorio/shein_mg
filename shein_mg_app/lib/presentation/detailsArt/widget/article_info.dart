@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shein_mg_app/core/constants/app_color.dart';
+import 'package:shein_mg_app/domain/entities/article.dart';
 
 class ArticleInfo extends StatelessWidget {
   const ArticleInfo({
@@ -9,12 +11,14 @@ class ArticleInfo extends StatelessWidget {
     required this.rating,
     required this.numOfReviews,
     required this.color,
+    required this.article,
   });
 
   final String title, brand, description;
   final double rating;
   final int numOfReviews;
   final Color color;
+  final Article article;
 
   @override
   Widget build(BuildContext context) {
@@ -52,21 +56,50 @@ class ArticleInfo extends StatelessWidget {
               style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(height: 16),
-            Container(
-              padding: const EdgeInsets.all(16 / 2),
-              decoration: BoxDecoration(
-                color: color,
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(16 / 2),
+            Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(16 / 2),
+                  decoration: BoxDecoration(
+                    color: color,
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(16 / 2),
+                    ),
+                  ),
+                  child: Text(
+                    "Motif",
+                    style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                        color: Colors.white, fontWeight: FontWeight.w500),
+                  ),
                 ),
-              ),
-              child: Text(
-                "Motif",
-                style: Theme.of(context)
-                    .textTheme
-                    .labelSmall!
-                    .copyWith(color: Colors.white, fontWeight: FontWeight.w500),
-              ),
+                const SizedBox(width: 10),
+                Row(
+                  children: List.generate(article.tailleArt.length, (index) {
+                    return Container(
+                      width: 32,
+                      padding: const EdgeInsets.all(5),
+                      margin: const EdgeInsets.only(right: 8),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: MesCouleurs.secondaire.withOpacity(0.3),
+                        ),
+                        borderRadius: BorderRadius.circular(10),
+                        color: MesCouleurs.secondaire.withOpacity(0.3),
+                      ),
+                      child: Center(
+                        child: Text(
+                          article.tailleArt[index],
+                          style: TextStyle(
+                            color: color,
+                            fontFamily: 'MontSerrat_3',
+                            fontSize: 12,
+                          ),
+                        ),
+                      ),
+                    );
+                  }),
+                )
+              ],
             ),
             const SizedBox(height: 16),
             Text(

@@ -41,6 +41,7 @@ class _DetailsArtState extends State<DetailsArt> {
               rating: 4.4,
               numOfReviews: 126,
               color: couleurDominant,
+              article: article,
             ),
           ],
         ),
