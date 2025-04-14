@@ -1,5 +1,6 @@
 class Article {
   final int idArt;
+  final String fournisseur;
   final String titreArt;
   final double prixArt;
   final double noteArt;
@@ -10,6 +11,7 @@ class Article {
 
   Article({
     required this.idArt,
+    required this.fournisseur,
     required this.titreArt,
     required this.prixArt,
     required this.noteArt,
@@ -23,6 +25,7 @@ class Article {
 List<Article> listeArticles = [
   Article(
     idArt: 1,
+    fournisseur: 'shein',
     titreArt: 'Article 1',
     prixArt: 45000.00,
     noteArt: 4.5,
@@ -38,6 +41,7 @@ List<Article> listeArticles = [
   ),
   Article(
     idArt: 2,
+    fournisseur: 'shein',
     titreArt: 'Article 2',
     prixArt: 60000.00,
     noteArt: 4.0,
@@ -52,6 +56,7 @@ List<Article> listeArticles = [
   ),
   Article(
     idArt: 3,
+    fournisseur: 'shein',
     titreArt: 'Robe Élégante',
     prixArt: 38000.00,
     noteArt: 4.2,
@@ -68,6 +73,7 @@ List<Article> listeArticles = [
   ),
   Article(
     idArt: 4,
+    fournisseur: 'shein',
     titreArt: 'Robe de Soirée',
     prixArt: 59000.00,
     noteArt: 4.8,
@@ -82,6 +88,7 @@ List<Article> listeArticles = [
   ),
   Article(
     idArt: 5,
+    fournisseur: 'shein',
     titreArt: 'Robe Décontractée',
     prixArt: 55000.00,
     noteArt: 3.9,
