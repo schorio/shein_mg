@@ -34,12 +34,7 @@ class _DetailsArtState extends State<DetailsArt> {
             const SilverAppBar(),
             imageSlider(),
             ArticleInfo(
-              brand: "LIPSY LONDON",
-              title: "Sleeveless Ruffle",
-              description:
-                  "A cool gray cap in soft corduroy. Watch me.' By buying cotton products from Lindex, you’re supporting more responsibly...",
-              rating: 4.4,
-              numOfReviews: 126,
+              indexImage: _currentImage,
               color: couleurDominant,
               article: article,
             ),

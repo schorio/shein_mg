@@ -5,18 +5,12 @@ import 'package:shein_mg_app/domain/entities/article.dart';
 class ArticleInfo extends StatelessWidget {
   const ArticleInfo({
     super.key,
-    required this.title,
-    required this.brand,
-    required this.description,
-    required this.rating,
-    required this.numOfReviews,
+    required this.indexImage,
     required this.color,
     required this.article,
   });
 
-  final String title, brand, description;
-  final double rating;
-  final int numOfReviews;
+  final int indexImage;
   final Color color;
   final Article article;
 
@@ -60,7 +54,7 @@ class ArticleInfo extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Détails sur l'article",
+          "Desciption",
           style: Theme.of(context)
               .textTheme
               .titleMedium!
@@ -68,7 +62,7 @@ class ArticleInfo extends StatelessWidget {
         ),
         const SizedBox(height: 2),
         Text(
-          description,
+          article.desciption,
           style: const TextStyle(
             height: 1.4,
             color: Colors.grey,
@@ -117,18 +111,18 @@ class ArticleInfo extends StatelessWidget {
         ),
       ),
       child: Text(
-        "Motif",
-        style: Theme.of(context)
-            .textTheme
-            .labelSmall!
-            .copyWith(color: Colors.white, fontWeight: FontWeight.w500),
+        article.couleurArt[indexImage],
+        style: Theme.of(context).textTheme.labelSmall!.copyWith(
+              color: Colors.white,
+              fontWeight: FontWeight.w500,
+            ),
       ),
     );
   }
 
   Text titreArticle(BuildContext context) {
     return Text(
-      title,
+      article.titreArt,
       maxLines: 2,
       style: Theme.of(context).textTheme.titleLarge,
     );
@@ -144,7 +138,7 @@ class ArticleInfo extends StatelessWidget {
         ),
         const SizedBox(width: 16 / 4),
         Text(
-          "$rating ",
+          article.noteArt.toString(),
           style: Theme.of(context).textTheme.bodyLarge,
         ),
       ],
