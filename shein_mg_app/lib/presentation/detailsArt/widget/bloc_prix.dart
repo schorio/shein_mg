@@ -38,7 +38,7 @@ class BlocPrix extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        " ${article.prixArtAP.toString()} ",
+                        " ${formatNombre(article.prixArtAP)} ",
                         style: const TextStyle(
                           fontSize: 12,
                           decoration: TextDecoration.lineThrough,
@@ -53,7 +53,7 @@ class BlocPrix extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        article.prixArt.toString(),
+                        formatNombre(article.prixArt),
                         style: TextStyle(
                           color: couleurDominant,
                           fontFamily: 'MontSerrat_2',

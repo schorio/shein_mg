@@ -23,7 +23,7 @@ class PrixArtWidget extends StatelessWidget {
               style: TextStyle(
                 fontSize: 12,
               )),
-          Text("${article.prixArt} Ar",
+          Text("${formatNombre(article.prixArt)} Ar",
               style: TextStyle(
                 fontSize: 22,
                 color: widget.color,

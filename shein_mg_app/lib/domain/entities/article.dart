@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class Article {
   final int idArt;
   final String fournisseur;
@@ -24,6 +26,12 @@ class Article {
     required this.tailleArt,
     required this.comsArt,
   });
+}
+
+String formatNombre(int nombre) {
+  final formatter =
+      NumberFormat('#,###', 'fr_FR'); // 'fr_FR' pour l’espace comme séparateur
+  return formatter.format(nombre);
 }
 
 List<Article> listeArticles = [
