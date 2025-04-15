@@ -17,7 +17,7 @@ class ArticleInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverPadding(
-      padding: const EdgeInsets.all(18),
+      padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
       sliver: SliverToBoxAdapter(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

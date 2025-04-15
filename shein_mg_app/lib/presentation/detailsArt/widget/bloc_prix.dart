@@ -16,7 +16,7 @@ class BlocPrix extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverPadding(
       padding: const EdgeInsets.only(
-        top: 20,
+        top: 15,
       ),
       sliver: SliverToBoxAdapter(
         child: Container(
