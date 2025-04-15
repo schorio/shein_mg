@@ -8,6 +8,8 @@ class Article {
   final int prixArtAP;
   final double noteArt;
   final String desciption;
+  final String dateAjout;
+  final String dateFinPromo;
   final List<String> imageArt;
   final List<String> couleurArt;
   final List<String> tailleArt;
@@ -25,6 +27,8 @@ class Article {
     required this.couleurArt,
     required this.tailleArt,
     required this.comsArt,
+    this.dateAjout = '2023-10-01',
+    this.dateFinPromo = '',
   });
 }
 
@@ -53,6 +57,7 @@ List<Article> listeArticles = [
     couleurArt: ['Green', 'Yellow', 'Red', 'Blue'],
     tailleArt: ['M', 'L', 'XL'],
     comsArt: ['Good quality', 'Worth the price'],
+    dateFinPromo: '23h : 59m : 59s', // Valeur spécifique
   ),
   Article(
     idArt: 2,
@@ -71,6 +76,7 @@ List<Article> listeArticles = [
     couleurArt: ['Black', 'White', 'Gray'],
     tailleArt: ['S', 'M', 'L'],
     comsArt: ['Great product!', 'Loved it!'],
+    dateFinPromo: '22h : 00m : 00s', // Valeur spécifique
   ),
   Article(
     idArt: 3,
