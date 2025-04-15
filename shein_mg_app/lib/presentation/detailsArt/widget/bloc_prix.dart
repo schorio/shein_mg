@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shein_mg_app/core/constants/app_color.dart';
 import 'package:shein_mg_app/domain/entities/article.dart';
 
 class BlocPrix extends StatelessWidget {
@@ -20,64 +19,75 @@ class BlocPrix extends StatelessWidget {
       ),
       sliver: SliverToBoxAdapter(
         child: Container(
-          height: 50,
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          margin: const EdgeInsets.symmetric(horizontal: 15),
+          height: 45,
+          padding: const EdgeInsets.symmetric(horizontal: 12),
           decoration: BoxDecoration(
-            border: Border.all(
-              color: MesCouleurs.secondaire.withOpacity(0.3),
+            borderRadius: const BorderRadius.all(
+              Radius.circular(12),
             ),
-            borderRadius: BorderRadius.circular(10),
-            color: MesCouleurs.secondaire.withOpacity(0.3),
+            border: Border.all(
+              color: couleurDominant.withOpacity(0.03),
+            ),
+            color: couleurDominant.withOpacity(0.08),
           ),
           child: Row(
             children: [
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [
-                      Text(
-                        " ${formatNombre(article.prixArtAP)} ",
-                        style: const TextStyle(
-                          fontSize: 12,
-                          decoration: TextDecoration.lineThrough,
-                        ),
-                      ),
-                      const Text(
-                        "Ar",
-                        style: TextStyle(fontSize: 8),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        formatNombre(article.prixArt),
-                        style: TextStyle(
-                          color: couleurDominant,
-                          fontFamily: 'MontSerrat_2',
-                          fontSize: 20,
-                        ),
-                      ),
-                      const SizedBox(width: 3),
-                      Text(
-                        "Ar",
-                        style: TextStyle(
-                          color: couleurDominant,
-                          fontFamily: 'MontSerrat_2',
-                          fontSize: 12,
-                        ),
-                      ),
-                    ],
-                  ),
+                  prixAvantPromo(),
+                  prixArticle(),
                 ],
               ),
-              const Spacer()
+              const Spacer(),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Row prixArticle() {
+    return Row(
+      children: [
+        Text(
+          formatNombre(article.prixArt),
+          style: TextStyle(
+            color: couleurDominant,
+            fontSize: 18,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+        const SizedBox(width: 3),
+        Text(
+          "Ar",
+          style: TextStyle(
+            color: couleurDominant,
+            fontSize: 12,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Row prixAvantPromo() {
+    return Row(
+      children: [
+        Text(
+          " ${formatNombre(article.prixArtAP)} ",
+          style: const TextStyle(
+            fontSize: 9,
+            decoration: TextDecoration.lineThrough,
+          ),
+        ),
+        const Text(
+          "Ar",
+          style: TextStyle(fontSize: 6),
+        ),
+      ],
     );
   }
 }
