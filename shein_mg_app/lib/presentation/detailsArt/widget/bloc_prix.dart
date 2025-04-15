@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shein_mg_app/core/constants/app_color.dart';
 import 'package:shein_mg_app/domain/entities/article.dart';
 
 class BlocPrix extends StatelessWidget {
@@ -42,10 +43,33 @@ class BlocPrix extends StatelessWidget {
                 ],
               ),
               const Spacer(),
+              if (article.dateFinPromo.isNotEmpty) expirationArt()
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Column expirationArt() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        const Text(
+          "se termine dans :",
+          style: TextStyle(
+            fontSize: 9,
+          ),
+        ),
+        Text(
+          article.dateFinPromo,
+          style: const TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.w900,
+          ),
+        )
+      ],
     );
   }
 
