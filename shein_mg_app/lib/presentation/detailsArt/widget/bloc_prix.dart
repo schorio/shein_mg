@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shein_mg_app/core/constants/app_color.dart';
 import 'package:shein_mg_app/domain/entities/article.dart';
+import 'package:shein_mg_app/domain/logic/counter_logic.dart';
 
-class BlocPrix extends StatelessWidget {
+class BlocPrix extends StatefulWidget {
   const BlocPrix({
     Key? key,
     required this.article,
@@ -13,7 +13,18 @@ class BlocPrix extends StatelessWidget {
   final Color couleurDominant;
 
   @override
+  State<BlocPrix> createState() => _BlocPrixState();
+}
+
+class _BlocPrixState extends State<BlocPrix> {
+  late Counter _counterArtExpiration;
+  Duration _currentExpirationDuration = Duration.zero;
+
+  @override
   Widget build(BuildContext context) {
+    String timerExpirationArt =
+        Counter.formatDuration(_currentExpirationDuration);
+
     return SliverPadding(
       padding: const EdgeInsets.only(
         top: 15,
@@ -28,9 +39,9 @@ class BlocPrix extends StatelessWidget {
               Radius.circular(12),
             ),
             border: Border.all(
-              color: couleurDominant.withOpacity(0.03),
+              color: widget.couleurDominant.withOpacity(0.03),
             ),
-            color: couleurDominant.withOpacity(0.08),
+            color: widget.couleurDominant.withOpacity(0.08),
           ),
           child: Row(
             children: [
@@ -43,7 +54,10 @@ class BlocPrix extends StatelessWidget {
                 ],
               ),
               const Spacer(),
-              if (article.dateFinPromo.isNotEmpty) expirationArt()
+              if (widget.article.dateFinPromo.isNotEmpty)
+                _currentExpirationDuration == Duration.zero
+                    ? const Text('Artice expiré')
+                    : expirationArt(timerExpirationArt)
             ],
           ),
         ),
@@ -51,7 +65,7 @@ class BlocPrix extends StatelessWidget {
     );
   }
 
-  Column expirationArt() {
+  Column expirationArt(timerExpirationArt) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.end,
@@ -63,7 +77,7 @@ class BlocPrix extends StatelessWidget {
           ),
         ),
         Text(
-          article.dateFinPromo,
+          timerExpirationArt,
           style: const TextStyle(
             fontSize: 12,
             fontWeight: FontWeight.w900,
@@ -77,9 +91,9 @@ class BlocPrix extends StatelessWidget {
     return Row(
       children: [
         Text(
-          formatNombre(article.prixArt),
+          formatNombre(widget.article.prixArt),
           style: TextStyle(
-            color: couleurDominant,
+            color: widget.couleurDominant,
             fontSize: 18,
             fontWeight: FontWeight.w700,
           ),
@@ -88,7 +102,7 @@ class BlocPrix extends StatelessWidget {
         Text(
           "Ar",
           style: TextStyle(
-            color: couleurDominant,
+            color: widget.couleurDominant,
             fontSize: 12,
             fontWeight: FontWeight.w700,
           ),
@@ -101,7 +115,7 @@ class BlocPrix extends StatelessWidget {
     return Row(
       children: [
         Text(
-          " ${formatNombre(article.prixArtAP)} ",
+          " ${formatNombre(widget.article.prixArtAP)} ",
           style: const TextStyle(
             fontSize: 9,
             decoration: TextDecoration.lineThrough,
@@ -113,5 +127,27 @@ class BlocPrix extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  @override
+  void initState() {
+    if (widget.article.dateFinPromo.isNotEmpty) {
+      _counterArtExpiration = Counter(
+        articleCreationDate: widget.article.dateAjout,
+        expirationDuration: widget.article.dateFinPromo,
+        onTimeUpdated: (newDuration) => setState(
+          () => _currentExpirationDuration = newDuration,
+        ),
+      );
+    }
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    if (widget.article.dateFinPromo.isNotEmpty) {
+      _counterArtExpiration.dispose();
+    }
+    super.dispose();
   }
 }
