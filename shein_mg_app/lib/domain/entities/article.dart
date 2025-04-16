@@ -57,7 +57,7 @@ List<Article> listeArticles = [
     couleurArt: ['Green', 'Yellow', 'Red', 'Blue'],
     tailleArt: ['M', 'L', 'XL'],
     comsArt: ['Good quality', 'Worth the price'],
-    dateFinPromo: '23:59:59', // Valeur spécifique
+    dateFinPromo: '00:58:00', // Valeur spécifique
   ),
   Article(
     idArt: 2,
