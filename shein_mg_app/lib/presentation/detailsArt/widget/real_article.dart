@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:shein_mg_app/domain/entities/article.dart';
+import 'package:shein_mg_app/route/app_route_name.dart';
 
 class RealArticle extends StatefulWidget {
   const RealArticle({
@@ -60,41 +61,54 @@ class _RealArticleState extends State<RealArticle> {
                       horizontal: 20,
                       vertical: 15,
                     ),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        image: DecorationImage(
-                          image: AssetImage(
-                            widget.article.imageArt[index],
+                    child: GestureDetector(
+                      onTap: () {
+                        Article article = widget.article;
+                        Navigator.pushNamed(
+                          context,
+                          AppRouteName.imageViewer,
+                          arguments: {
+                            'article': article,
+                            'showedIndex': showedIndex,
+                          },
+                        );
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          image: DecorationImage(
+                            image: AssetImage(
+                              widget.article.imageArt[index],
+                            ),
+                            fit: BoxFit.cover,
                           ),
-                          fit: BoxFit.cover,
                         ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                          left: 15,
-                          top: 150,
-                        ),
-                        child: Row(
-                          children: List.generate(
-                            widget.article.imageArt.length,
-                            (index) {
-                              return AnimatedContainer(
-                                duration: const Duration(milliseconds: 300),
-                                width: showedIndex == index ? 20 : 8,
-                                height: showedIndex == index ? 10 : 8,
-                                margin: const EdgeInsets.only(right: 4),
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: Colors.black,
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                            left: 15,
+                            top: 150,
+                          ),
+                          child: Row(
+                            children: List.generate(
+                              widget.article.imageArt.length,
+                              (index) {
+                                return AnimatedContainer(
+                                  duration: const Duration(milliseconds: 300),
+                                  width: showedIndex == index ? 20 : 8,
+                                  height: showedIndex == index ? 10 : 8,
+                                  margin: const EdgeInsets.only(right: 4),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: Colors.black,
+                                    ),
+                                    color: showedIndex == index
+                                        ? Colors.black
+                                        : Colors.grey,
+                                    borderRadius: BorderRadius.circular(50),
                                   ),
-                                  color: showedIndex == index
-                                      ? Colors.black
-                                      : Colors.grey,
-                                  borderRadius: BorderRadius.circular(50),
-                                ),
-                              );
-                            },
+                                );
+                              },
+                            ),
                           ),
                         ),
                       ),
