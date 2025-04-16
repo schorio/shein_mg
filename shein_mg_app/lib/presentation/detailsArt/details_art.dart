@@ -6,6 +6,7 @@ import 'package:shein_mg_app/presentation/detailsArt/widget/article_images.dart'
 import 'package:shein_mg_app/presentation/detailsArt/widget/article_info.dart';
 import 'package:shein_mg_app/presentation/detailsArt/widget/bloc_prix.dart';
 import 'package:shein_mg_app/presentation/detailsArt/widget/index_image.dart';
+import 'package:shein_mg_app/presentation/detailsArt/widget/real_article.dart';
 import 'package:shein_mg_app/presentation/detailsArt/widget/silver_app_bar.dart';
 
 class DetailsArt extends StatefulWidget {
@@ -44,6 +45,7 @@ class _DetailsArtState extends State<DetailsArt> {
               color: couleurDominant,
               article: article,
             ),
+            RealArticle(article: article),
           ],
         ),
       ),
