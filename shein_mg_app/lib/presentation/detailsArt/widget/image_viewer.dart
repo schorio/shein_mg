@@ -13,14 +13,8 @@ class _ImageViewerState extends State<ImageViewer> {
   late Article article;
   late int showedIndex;
 
-  @override
-  void didChangeDependencies() {
-    final arguments =
-        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
-    article = arguments['article'];
-    showedIndex = arguments['showedIndex'];
-    super.didChangeDependencies();
-  }
+  final transController = TransformationController();
+  TapDownDetails? doubleTapDetails;
 
   @override
   Widget build(BuildContext context) {
@@ -37,43 +31,48 @@ class _ImageViewerState extends State<ImageViewer> {
         },
       ),
       itemBuilder: (context, index, _) {
-        return Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(
-                article.imageArt[index],
-              ),
-              fit: BoxFit.contain,
-            ),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.only(
-              left: 15,
-              top: 150,
-            ),
-            child: Row(
-              children: List.generate(
-                article.imageArt.length,
-                (index) {
-                  return AnimatedContainer(
-                    duration: const Duration(milliseconds: 300),
-                    width: showedIndex == index ? 20 : 8,
-                    height: showedIndex == index ? 10 : 8,
-                    margin: const EdgeInsets.only(right: 4),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.black,
-                      ),
-                      color: showedIndex == index ? Colors.black : Colors.grey,
-                      borderRadius: BorderRadius.circular(50),
-                    ),
-                  );
-                },
+        return GestureDetector(
+          onDoubleTap: handleDoubleTap,
+          onDoubleTapDown: handleDoubleTapDown,
+          child: InteractiveViewer(
+            transformationController: transController,
+            child: Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(
+                    article.imageArt[index],
+                  ),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
         );
       },
     );
+  }
+
+  @override
+  void didChangeDependencies() {
+    final arguments =
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+    article = arguments['article'];
+    showedIndex = arguments['showedIndex'];
+    super.didChangeDependencies();
+  }
+
+  handleDoubleTapDown(TapDownDetails details) {
+    doubleTapDetails = details;
+  }
+
+  handleDoubleTap() {
+    if (transController.value != Matrix4.identity()) {
+      transController.value = Matrix4.identity();
+    } else {
+      final position = doubleTapDetails!.localPosition;
+      transController.value = Matrix4.identity()
+        ..translate(-position.dx, -position.dy)
+        ..scale(2.0);
+    }
   }
 }
