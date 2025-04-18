@@ -6,20 +6,24 @@ class IndexImage extends StatelessWidget {
     super.key,
     required this.article,
     required this.index,
+    required this.height,
+    required this.bottom,
+    required this.right,
   });
 
   final Article article;
   final int index;
+  final double height, bottom, right;
 
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      height: 20,
-      bottom: 24,
-      right: MediaQuery.of(context).size.width * 0.15,
+      height: height,
+      bottom: MediaQuery.of(context).size.width * bottom,
+      right: MediaQuery.of(context).size.width * right,
       child: Container(
         padding: const EdgeInsets.symmetric(
-          horizontal: 16 * 0.75,
+          horizontal: 10,
         ),
         decoration: BoxDecoration(
           color: Theme.of(context).scaffoldBackgroundColor,
@@ -30,7 +34,7 @@ class IndexImage extends StatelessWidget {
             article.imageArt.length,
             (i) => Padding(
               padding: EdgeInsets.only(
-                  right: i == (article.imageArt.length - 1) ? 0 : 16 / 4),
+                  right: i == (article.imageArt.length - 1) ? 0 : 4),
               child: CircleAvatar(
                 radius: 3,
                 backgroundColor: Theme.of(context)

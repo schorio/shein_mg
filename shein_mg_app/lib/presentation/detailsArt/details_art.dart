@@ -79,6 +79,9 @@ class _DetailsArtState extends State<DetailsArt> {
               IndexImage(
                 article: article,
                 index: _currentImage,
+                height: 20,
+                bottom: 0.05,
+                right: 0.15,
               )
           ],
         ),
